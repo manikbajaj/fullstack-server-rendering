@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
+var hbs = require("hbs");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === "development") {
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials", function (err) {});
 
 app.use(logger("dev"));
 app.use(express.json());
