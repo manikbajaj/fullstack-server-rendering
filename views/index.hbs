@@ -1,23 +1,25 @@
-<main class="container mx-auto d-flex py-5">
-  <section class="col-8">
-    <div>
-      <h1 class="h3 text-dark text-opacity-75">
-        Explore the Wild: Adventures in Uncharted Lands
-      </h1>
-      <p class="text-light-emphasis fst-italic mb-5">
-        Latest Journeys and Wilderness Discoveries
-      </p>
-    </div>
-    <div>
-      {{> blogPost}}
-      {{> blogPost}}
-      {{> blogPost}}
-    </div>
-    <div class="d-flex justify-content-end">
-      {{> pagination}}
-    </div>
-  </section>
-  <aside class="col-4 text-center">
-    {{> tags}}
-  </aside>
+<main class="container mx-auto py-5">
+  <div class="row">
+    <section class="col-12 col-md-8">
+      <div>
+        <h1 class="h3 text-dark text-opacity-75">
+          Explore the Wild: Adventures in Uncharted Lands
+        </h1>
+        <p class="text-light-emphasis fst-italic mb-5">
+          Latest Journeys and Wilderness Discoveries
+        </p>
+      </div>
+      <div>
+        {{> blogPost}}
+        {{> blogPost}}
+        {{> blogPost}}
+      </div>
+      <div class="d-flex justify-content-end">
+        {{> pagination}}
+      </div>
+    </section>
+    <aside class="col-12 col-md-4 text-center pt-md-0 pt-4">
+      {{> tags}}
+    </aside>
+  </div>
 </main>
