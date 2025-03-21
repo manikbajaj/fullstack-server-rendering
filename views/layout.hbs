@@ -16,8 +16,10 @@
     ></script>
   </head>
   <body>
-    {{> header}}
-    {{{body}}}
-    {{> footer}}
+      {{> header}}
+        <main class="container mx-auto py-5">
+          {{{body}}}
+        </main>
+      {{> footer}}
   </body>
 </html>
