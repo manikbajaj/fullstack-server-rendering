@@ -10,6 +10,7 @@ var hbs = require("hbs");
 var indexRouter = require("./routes/index");
 var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
+var blogRouter = require("./routes/blog");
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/blog", blogRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
