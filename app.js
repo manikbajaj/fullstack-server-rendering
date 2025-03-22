@@ -11,6 +11,9 @@ var indexRouter = require("./routes/index");
 var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var blogRouter = require("./routes/blog");
+var dotenv = require("dotenv");
+
+dotenv.config();
 
 var app = express();
 
