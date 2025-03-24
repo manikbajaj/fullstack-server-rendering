@@ -1,0 +1,19 @@
+# Without rm flag the container will not be removed
+
+docker run --name dockerpostgres -e POSTGRES_PASSWORD=mypassword -p 5435:5432 -d postgres
+
+# Command to stop container 
+docker stop dockerpostgres  
+
+# Command to remove container  (Not removed because rm flag was not used)
+docker rm dockerpostgres  
+
+# With rm flag the container will not be removed
+
+docker run --name dockerpostgres -e POSTGRES_PASSWORD=mypassword -p 5435:5432 --rm -d postgres
+
+Connect using pgAdmin 
+locahost 
+5435
+username - postgres
+password - mypassword
