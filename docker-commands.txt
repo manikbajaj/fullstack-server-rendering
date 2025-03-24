@@ -1,7 +1,16 @@
 # Without rm flag the container will not be removed
+
 ## run docker run without -d flag to rund docker in attached mode FIRST
 
+!When you run a Docker container in attached mode, your terminal or command line interface is attached to the standard output (STDOUT) of the container. This means you can see the output of the container directly in your terminal. 
+
 docker run --name dockerpostgres -e POSTGRES_PASSWORD=mypassword -p 5435:5432 -d postgres
+
+! The -it combination is useful for running containers interactively. It combines -i (interactive), which keeps STDIN open even if not attached, and -t, which allocates a pseudo-TTY or terminal inside the container. This mode is particularly useful when you need to interact with the application or command line inside the container, such as running a shell or an interactive script.
+
+docker run -it --name dockerpostgres -e POSTGRES_PASSWORD=mypassword -p 5435:5432 postgres bash
+
+docker run -it --name myshell ubuntu bash
 
 # Command to stop container 
 docker stop dockerpostgres  
