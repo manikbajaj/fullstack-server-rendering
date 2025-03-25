@@ -1,14 +1,22 @@
 # Build the Docker image
 docker build -t fullstack .
 
-# Start a new continer with named volume and bind mount
-docker run --name fullstackContainer -v logs:/app/public/logs -v "/Users/manikbajaj/Business/apps/fullstack-server-rendering/:/app" -p 3000:3000 fullstack 
-
 # adding anonymous volume
-docker run --name fullstackContainer --rm -v logs:/app/public/logs -v "/Users/manikbajaj/Business/apps/fullstack-server-rendering/:/app" -v /app/node_modules -p 3000:3000 -p 35729:35729 fullstack 
+docker run 
+--name fullstackContainer 
+--rm 
+-v logs:/app/public/logs 
+-v "/Users/manikbajaj/Business/apps/fullstack-server-rendering/:/app" 
+-v /app/node_modules 
+-p 3000:3000 
+-p 35729:35729 
+fullstack 
 
-# enter interactive mode once container is launched (Once agian logs will persist)
-docker exec -it fullstackContainer /bin/bash
-cd public/logs && ls -al 
 
-# APP restarts 
+# PostgresSQL
+docker run 
+--name dockerpostgres 
+-e POSTGRES_PASSWORD=mypassword 
+-p 5435:5432 
+--rm 
+-d postgres
