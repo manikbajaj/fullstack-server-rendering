@@ -1,46 +1,11 @@
 # Build the Docker image
 docker build -t fullstack .
 
-# Show all volumes
-docker volume ls 
+# Start a new continer with named volume and bind mount
+docker run --name fullstackContainer -v logs:/app/public/logs -v "/Users/manikbajaj/Business/apps/fullstack-server-rendering/:/app" -p 3000:3000 -a fullstack 
 
-# Delete Orphaned Volumes
-docker volume prune
-
-# Show all volumes once again (No Volume Exists)
-docker volume ls 
-
-# Create a container with a new volume
-docker run -d --name fullstackContainer -v /app/public/logs -p 3000:3000 fullstack
-
-# Show all volumes once again (New Volume now created with anonymous name)
-docker volume ls 
-
-# Check various details related to a volume 
-docker volume inspect aeefa1640414b78378ec541fe..
-
-# Stop the container
-docker stop fullstackContainer
-
-# Volume still exists when you stop the container
-docker volume ls 
-
-# Even if you delete the container Volume will exist 
-docker rm fullstackContainer
-
-# Create a named volume  (Cannot start in TTY mode the node application wont run)
-docker run --name fullstackContainer -v logs:/app/public/logs -p 3000:3000 -d fullstack 
-
-# enter interactive mode once container is launched 
-docker exec -it fullstackContainer /bin/bash
-
-# Show logs directory is empty 
-# Create logs and refresh directory contents to show logs are being created 
-cd public/logs
-
-# Now stop and remove the container
-# Start a new continer with same volume 
-docker run --name fullstackContainer -v logs:/app/public/logs -p 3000:3000 -d fullstack 
+# adding anonymous volume
+docker run --name fullstackContainer --rm -v logs:/app/public/logs -v "/Users/manikbajaj/Business/apps/fullstack-server-rendering/:/app" -v /app/node_modules -p 3000:3000 -a fullstack 
 
 # enter interactive mode once container is launched (Once agian logs will persist)
 docker exec -it fullstackContainer /bin/bash
