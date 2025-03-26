@@ -1,20 +1,20 @@
-/* Example 1: Update a User’s Email Address */
-UPDATE users
-SET email = 'new.email@example.com'
-WHERE user_id = 1;
+-- Create the Person table
+CREATE TABLE Person (
+    PersonID SERIAL PRIMARY KEY,
+    FullName VARCHAR(100) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL
+);
 
-
-/* Example 2: Deactivate a User Account */
-UPDATE users
-SET is_active = FALSE
-WHERE user_id = 2;
-
-
-/* Example 1: Delete a User by User ID */
-DELETE FROM users
-WHERE user_id = 3;
-
-
-/* Example 2: Delete All Inactive Users */
-DELETE FROM users
-WHERE is_active = FALSE;
+-- Create the Passport table
+CREATE TABLE Passport (
+    PassportID SERIAL PRIMARY KEY,
+    PersonID INT UNIQUE NOT NULL,
+    PassportNumber VARCHAR(50) UNIQUE NOT NULL,
+    IssuingCountry VARCHAR(50) NOT NULL,
+    ExpiryDate DATE NOT NULL,
+    CONSTRAINT fk_person
+        FOREIGN KEY (PersonID)
+        REFERENCES Person (PersonID)
+        ON DELETE CASCADE
+);
