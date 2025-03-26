@@ -10,6 +10,7 @@
     "watch:js": "esbuild public/javascripts/*.js --bundle --outfile=public/dist/index.js --sourcemap --watch"
   },
   "dependencies": {
+    "@prisma/client": "^6.5.0",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
@@ -25,6 +26,7 @@
     "connect-livereload": "^0.6.1",
     "esbuild": "^0.25.1",
     "livereload": "^0.9.3",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "prisma": "^6.5.0"
   }
 }
