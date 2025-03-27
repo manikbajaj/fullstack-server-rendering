@@ -1,6 +1,6 @@
 var { checkSchema } = require("express-validator");
 
-export const signupValidator = checkSchema({
+const signupValidator = checkSchema({
   firstName: {
     in: ["body"],
     notEmpty: true,
@@ -40,3 +40,5 @@ export const signupValidator = checkSchema({
     },
   },
 });
+
+module.exports = signupValidator;
