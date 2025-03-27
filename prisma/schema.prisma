@@ -41,11 +41,12 @@ model Post {
   updatedAt        DateTime @updatedAt
 
   // Relationships
-  author   User @relation(fields: [authorId], references: [id])
+  author   User  @relation(fields: [authorId], references: [id])
   authorId Int // This assumes that each post is linked to a User
   /**
    * [authorId]: Tells Prisma that the authorId field in the Post model is used to establish this relationship. It is where the foreign key value (user's ID) is stored.
    */
+  tags     Tag[]
 }
 
 /**
@@ -55,3 +56,16 @@ model Post {
  * fields: [authorId]: This part of the @relation directive tells Prisma which field in the Post model is used to store the foreign key. In this case, authorId is a field in the Post model that will hold the ID of the User who is the author of the post.
  * references: [id]: This specifies that the authorId field in the Post model corresponds to the id field in the User model. In other words, authorId is a foreign key that references the primary key (id) of the User model.
  */
+
+/**
+ * Tag and Post model have an implicit may to m,any relationship
+ * Implicit m-n relations define relation fields as lists on both sides of the relation. Although the relation table exists in the underlying database, it is managed by Prisma ORM and does not manifest in the Prisma schema. Implicit relation tables follow a specific convention.
+ * https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations#implicit-many-to-many-relations
+ */
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+  posts Post[]
+}
