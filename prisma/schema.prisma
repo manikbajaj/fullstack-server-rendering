@@ -20,8 +20,38 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   firstName String
-  lastName  String? /* fields not using ? are required */
-  email     String  @unique
+  lastName  String? // Optional field
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) // Sets the default value to the current datetime
+  updatedAt DateTime @updatedAt // Updates the field every time the record is updated
+  Post      Post[]
 }
+
+model Post {
+  id               Int      @id @default(autoincrement())
+  title            String
+  content          String   @db.Text // Suitable for storing long-form content
+  slug             String   @unique
+  excerpt          String
+  featuredImageUrl String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relationships
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int // This assumes that each post is linked to a User
+  /**
+   * [authorId]: Tells Prisma that the authorId field in the Post model is used to establish this relationship. It is where the foreign key value (user's ID) is stored.
+   */
+}
+
+/**
+ * author: This is the field name in the Post model representing the related User. It is how you will access the post's author from the post object in your application (e.g., post.author).
+ * User: This indicates the type of the relation, which is the User model. It specifies that the author field is linked to an instance of the User model.
+ * @relation: This is a Prisma directive used to specify details about the relationship between models.
+ * fields: [authorId]: This part of the @relation directive tells Prisma which field in the Post model is used to store the foreign key. In this case, authorId is a field in the Post model that will hold the ID of the User who is the author of the post.
+ * references: [id]: This specifies that the authorId field in the Post model corresponds to the id field in the User model. In other words, authorId is a foreign key that references the primary key (id) of the User model.
+ */
