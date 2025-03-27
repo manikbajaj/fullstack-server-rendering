@@ -15,6 +15,12 @@ services:
         source: /Users/manikbajaj/Business/apps/fullstack-server-rendering/
         target: /app
       - /app/node_modules # Anonymous volume for node_modules
+      - type: volume
+        source: prismaMigrations
+        target: /app/prisma/migrations
+      - type: volume
+        source: prismaGenerated
+        target: /app/prisma/generated
     environment:
       - NODE_ENV=development
     env_file:
@@ -39,3 +45,5 @@ services:
 volumes:
   logs:
   postgres_data:
+  prismaMigrations:
+  prismaGenerated:
