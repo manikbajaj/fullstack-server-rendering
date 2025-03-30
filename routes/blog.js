@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var { validationResult } = require("express-validator");
 var createPostValidator = require("../validators/createPost.validator.js");
+const { handlePostBlog } = require("../controllers/blog/blog.controller.js");
 
 /* GET home page. */
 router.get("/:blogId", function (req, res, next) {
@@ -11,7 +12,7 @@ router.get("/:blogId", function (req, res, next) {
 
 router.post("/create", createPostValidator, async function (req, res, next) {
   const result = validationResult(req);
-  console.log(req.body);
+  handlePostBlog(req, res);
   console.log(result.array());
   res.render("blog");
 });
