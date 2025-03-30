@@ -35,10 +35,10 @@ const createPostValidator = checkSchema({
       errorMessage: "Excerpt cannot be more than 255 characters long.",
     },
   },
-  featuredImageUrl: {
+  featuredImage: {
     in: ["body"],
-    notEmpty: true,
-    errorMessage: "Featured Image URL is required.",
+    optional: true,
+    errorMessage: "Featured Image is required.",
     isURL: {
       options: {
         protocols: ["http", "https"],
