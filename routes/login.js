@@ -3,6 +3,7 @@ var router = express.Router();
 var prisma = require("../prisma/prismaClient.js");
 var { validationResult } = require("express-validator");
 var loginValidator = require("../validators/login.validator.js");
+var { handlePostLogin } = require("../controllers/login/login.controller.js");
 
 /* GET home page. */
 router.get("/", async function (req, res, next) {
@@ -12,7 +13,7 @@ router.get("/", async function (req, res, next) {
 /* GET home page. */
 router.post("/", loginValidator, async function (req, res, next) {
   const result = validationResult(req);
-  console.log(req.body);
+  await handlePostLogin(req, res);
   console.log(result.array());
   res.render("login");
 });
