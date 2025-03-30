@@ -50,18 +50,8 @@ app.use(express.static(path.join(__dirname, "public/dist")));
 app.use(
   expressSession({
     secret: process.env.SESSION_SECRET,
-    /* Resave (Using false with default session store MEMORY - will change this) - Forces the session to be saved back to the session store, even if the session was never modified during the request. Depending on your store this may be necessary, but it can also create race conditions where a client makes two parallel requests to your server and changes made to the session in one request may get overwritten when the other request ends */
     resave: false,
-    /*
-    An uninitialized session refers to a newly created session that has not yet had any data stored in it. In the context of web applications, setting `saveUninitialized: true` means the session will be saved to the session store even if it hasn't been modified, which can be useful for tracking new visitors before they make any changes or inputs. 
-    
-    Choosing false is useful for implementing login sessions, reducing server storage usage. But we will be using a session store eventually so I will set this to true and data can be stored to session as well at a later stage
-    */
     saveUninitialized: true,
-    /* 
-    proxy
-    Trust the reverse proxy when setting secure cookies (via the “X-Forwarded-Proto” header).
-   */
     proxy: true,
     cookie: {
       maxAge: 7 * 24 * 60 * 60 * 1000, // ms
