@@ -17,13 +17,13 @@ async function loginUserProvider(req, res) {
 
   if (result) {
     req.session.isLoggedIn = true;
+    req.session.id = user.id;
     req.session.firstName = user.firstName;
+    req.session.lastName = user.lastName;
+    req.session.email = user.email;
   }
 
-  console.log(user);
-  console.log(result);
-
-  return user;
+  return res.render("createPost");
 }
 
 module.exports = { loginUserProvider };

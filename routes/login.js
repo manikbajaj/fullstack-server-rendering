@@ -13,9 +13,8 @@ router.get("/", async function (req, res, next) {
 /* GET home page. */
 router.post("/", loginValidator, async function (req, res, next) {
   const result = validationResult(req);
-  await handlePostLogin(req, res);
   console.log(result.array());
-  res.render("login");
+  return await handlePostLogin(req, res);
 });
 
 module.exports = router;

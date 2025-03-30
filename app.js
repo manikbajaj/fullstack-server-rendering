@@ -15,6 +15,7 @@ var dotenv = require("dotenv");
 const expressSession = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const prisma = require("./prisma/prismaClient.js");
+const addUserToViews = require("./middleware/addUserToViews.middleware.js");
 
 dotenv.config();
 
@@ -63,6 +64,8 @@ app.use(
     }),
   })
 );
+
+app.use(addUserToViews);
 
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
