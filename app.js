@@ -46,7 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public/dist")));
 app.use(
-  session({
+  expressSession({
     secret: process.env.SESSION_SECRET,
     /* Resave (Using false with default session store MEMORY - will change this) - Forces the session to be saved back to the session store, even if the session was never modified during the request. Depending on your store this may be necessary, but it can also create race conditions where a client makes two parallel requests to your server and changes made to the session in one request may get overwritten when the other request ends */
     resave: false,
