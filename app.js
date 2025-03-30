@@ -13,6 +13,8 @@ var loginRouter = require("./routes/login");
 var blogRouter = require("./routes/blog");
 var dotenv = require("dotenv");
 const expressSession = require("express-session");
+const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
+const prisma = require("./prisma/prismaClient.js");
 
 dotenv.config();
 
@@ -64,6 +66,11 @@ app.use(
     cookie: {
       maxAge: 7 * 24 * 60 * 60 * 1000, // ms
     },
+    store: new PrismaSessionStore(prisma, {
+      checkPeriod: 2 * 60 * 1000, //ms
+      dbRecordIdIsSessionId: true,
+      dbRecordIdFunction: undefined,
+    }),
   })
 );
 

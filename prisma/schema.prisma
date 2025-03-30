@@ -69,3 +69,10 @@ model Tag {
   slug  String @unique
   posts Post[]
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}
