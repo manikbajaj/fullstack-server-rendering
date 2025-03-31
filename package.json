@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development DEBUG=fullstack-server-rendering:*  nodemon ./bin/www --ext html,css,js,hbs,json",
     "dev:watch": "concurrently \"npm run dev\" \"npm run watch:js\"",
     "build:js": "esbuild public/javascripts/*.js --bundle --outfile=public/dist/index.js --minify",
-    "watch:js": "esbuild public/javascripts/*.js --bundle --outfile=public/dist/index.js --sourcemap --watch"
+    "watch:js": "esbuild public/javascripts/*.js --bundle --outfile=public/dist/index.js --sourcemap --watch",
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
