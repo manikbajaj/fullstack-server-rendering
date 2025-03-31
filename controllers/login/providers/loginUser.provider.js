@@ -23,7 +23,9 @@ async function loginUserProvider(req, res) {
     req.session.email = user.email;
   }
 
-  return res.render("createPost");
+  return res.render("createPost", {
+    user: { ...user, isLoggedIn: true },
+  });
 }
 
 module.exports = { loginUserProvider };

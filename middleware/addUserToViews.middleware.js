@@ -4,6 +4,9 @@ function addUserToViews(req, res, next) {
     res.locals.user = {
       isLoggedIn: req.session.isLoggedIn,
       firstName: req.session.firstName,
+      lastName: req.session.lastName,
+      email: req.session.email,
+      id: req.session.id,
     };
   } else {
     // Ensure user object is always present even if session is not started
@@ -15,4 +18,4 @@ function addUserToViews(req, res, next) {
   next();
 }
 
-module.exports = addUserToViews
+module.exports = addUserToViews;
