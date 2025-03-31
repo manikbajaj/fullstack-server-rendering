@@ -1,6 +1,6 @@
 // prisma/seeds/postSeed.js
 const prisma = require("../prismaClient.js");
-const faker = require("faker");
+const { faker } = require("@faker-js/faker");
 
 async function seedPosts() {
   const numberOfPosts = 30;
