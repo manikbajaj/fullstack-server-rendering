@@ -1,12 +1,14 @@
 var express = require("express");
 var router = express.Router();
-const fs = require("fs");
-const path = require("path");
 var requireAuth = require("../middleware/requireAuth.middleware.js");
+const getAllPostsValidator = require("../validators/getAllPosts.validator.js");
+var { validationResult } = require("express-validator");
+var { handleGetBlogs } = require("../controllers/blog/blog.controller.js");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express " });
+router.get("/", getAllPostsValidator, async function (req, res, next) {
+  const result = validationResult(req);
+  return await handleGetBlogs(req, res);
 });
 
 /* GET home page. */
