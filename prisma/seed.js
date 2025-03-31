@@ -1,9 +1,13 @@
+const cleanDatabase = require("./cleanup.js");
+
 // prisma/seed.js
 const seedUsers = require("./seeds/users.seed.js");
 const seedPosts = require("./seeds/posts.seed.js");
 const seedTags = require("./seeds/tags.seed.js");
 
 async function seed() {
+  await cleanDatabase();
+
   console.log("Starting database seeding...");
   await seedUsers();
   await seedPosts();
