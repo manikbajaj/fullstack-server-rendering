@@ -7,12 +7,21 @@ function createPagination(
 ) {
   const totalPages = Math.ceil(totalRecords / limit);
 
-  console.log(totalRecords);
+  const nextPageNumber = page === totalPages ? totalPages : page + 1;
+  const previousPageNumber = page === 1 ? 1 : page - 1;
 
-  pagination = [];
+  pagination = {
+    pageLinks: [],
+    nextPage: `${routeEndpoint}?page=${nextPageNumber}&limit=${limit}${
+      otherQueryParams ? "&" + otherQueryParams : ""
+    }`.trim(),
+    previousPage: `${routeEndpoint}?page=${previousPageNumber}&limit=${limit}${
+      otherQueryParams ? "&" + otherQueryParams : ""
+    }`.trim(),
+  };
 
   for (let i = 1; i <= totalPages; i++) {
-    pagination.push({
+    pagination.pageLinks.push({
       pageNumber: i,
       activePage: page === i ? true : false,
       link: `${routeEndpoint}?page=${i}&limit=${limit}${
