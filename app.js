@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
-var hbs = require("hbs");
+var hbs = require("./utils/handlebarsHelpers.utils.js");
 
 var indexRouter = require("./routes/index");
 var signupRouter = require("./routes/signup");

@@ -34,6 +34,7 @@ async function getAllPostsProvider(req, res) {
     },
   });
 
+  console.log(posts);
   const totalPages = Math.ceil(totalPosts / limit);
 
   return res.render("index", {

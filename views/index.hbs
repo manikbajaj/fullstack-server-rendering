@@ -9,9 +9,14 @@
       </p>
     </div>
     <div>
-      {{> blogPost}}
-      {{> blogPost}}
-      {{> blogPost}}
+      {{#if posts}}
+        {{#each posts}}
+          {{> blogPost title=this.title excerpt=this.excerpt updatedAt=this.updatedAt featuredImageUrl=this.featuredImageUrl slug=this.slug id=this.id }}
+        {{/each}}
+      {{ else }}
+      <h5>There are currently no posts to display.</h5>
+      {{/if}}
+      
     </div>
     <div class="d-flex justify-content-end">
       {{> pagination}}

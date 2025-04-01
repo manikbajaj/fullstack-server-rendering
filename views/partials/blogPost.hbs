@@ -11,19 +11,18 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title mb-3">
-          Starlight Campouts: Sleeping Under the Open Sky
+          {{title}}
         </h5>
         <p class="card-text text-secondary mb-3">
-          Unveil the cosmic beauty from your tent; an unforgettable night under
-          the vast, starry sky awaits you.
+          {{excerpt}}
         </p>
         <div class="d-flex flex-row justify-content-between">
           <p class="card-text mb-0">
             <small class="text-body-secondary">
-              5 March, 2025
+              {{formatDate updatedAt}}
             </small>
           </p>
-          <a href="#" class="btn btn-light btn-sm">
+          <a href="/blog/{{id}}" class="btn btn-light btn-sm">
             Read More
           </a>
         </div>
