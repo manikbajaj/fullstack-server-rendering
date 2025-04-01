@@ -19,7 +19,9 @@
       
     </div>
     <div class="d-flex justify-content-end">
-      {{> pagination}}
+      {{#if pagination.pageLinks}}
+        {{> pagination}}
+      {{/if}}
     </div>
   </section>
   <aside class="col-12 col-md-4 text-center pt-md-0 pt-4">

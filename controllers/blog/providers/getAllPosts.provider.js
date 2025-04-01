@@ -11,7 +11,7 @@ async function getAllPostsProvider(req, res) {
   console.log(tag);
 
   const posts = await prisma.post.findMany({
-    skip: page * limit,
+    skip: (page - 1) * limit,
     take: limit,
     where: {
       tags: {
@@ -43,9 +43,6 @@ async function getAllPostsProvider(req, res) {
     page,
     tag ? `tag=${tag}` : undefined
   );
-
-  console.log(totalPosts);
-  console.log(pagination);
 
   return res.render("index", {
     posts,
