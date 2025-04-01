@@ -44,6 +44,7 @@ async function getAllPostsProvider(req, res) {
     tag ? `tag=${tag}` : undefined
   );
 
+  console.log(totalPosts);
   console.log(pagination);
 
   return res.render("index", {
