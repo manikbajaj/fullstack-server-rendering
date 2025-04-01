@@ -11,7 +11,7 @@ function createPagination(
 
   pagination = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     pagination.push({
       pageNumber: i,
       activePage: page === i ? true : false,
