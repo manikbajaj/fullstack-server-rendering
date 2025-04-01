@@ -1,12 +1,14 @@
 const { matchedData } = require("express-validator");
 const prisma = require("../../../prisma/prismaClient.js");
-const util = require("util");
+const createPagination = require("../../../utils/createPagination.utils.js");
 
 async function getAllPostsProvider(req, res) {
   const validatedData = matchedData(req);
   const limit = validatedData.limit ?? 10;
   const page = validatedData.page ?? 1;
   const tag = validatedData.tag;
+
+  console.log(tag);
 
   const posts = await prisma.post.findMany({
     skip: page * limit,
@@ -34,14 +36,19 @@ async function getAllPostsProvider(req, res) {
     },
   });
 
-  const totalPages = Math.ceil(totalPosts / limit);
+  const pagination = createPagination(
+    totalPosts,
+    "/",
+    limit,
+    page,
+    tag ? `tag=${tag}` : undefined
+  );
+
+  console.log(pagination);
 
   return res.render("index", {
     posts,
-    currentPage: page,
-    limit,
-    totalPages,
-    tag,
+    pagination: pagination,
   });
 }
 
