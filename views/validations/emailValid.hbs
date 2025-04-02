@@ -1,0 +1,16 @@
+<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+  <input
+    type="email"
+    class="form-control is-valid"
+    id="email"
+    placeholder="Email"
+    aria-describedby="emailHelp"
+    name="email"
+    hx-post="/validations/email"
+    hx-trigger="change"
+    value="{{value}}"
+  />
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>

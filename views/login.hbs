@@ -9,7 +9,7 @@
 <div class="row mt-4">
   <div class="col-md-6 offset-md-3">
     <form action="http://localhost:3000/login" method="post">
-      <div class="mb-3">
+      <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         {{! https://htmx.org/docs/#triggers }}
         <input
           type="email"
@@ -18,8 +18,8 @@
           placeholder="Email"
           aria-describedby="emailHelp"
           name="email"
-          hx-post="/validations/email"
           hx-trigger="change"
+          hx-post="/validations/email"
         />
       </div>
       <div class="mb-3">
