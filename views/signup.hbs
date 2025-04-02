@@ -9,13 +9,18 @@
 <div class="row mt-4">
   <div class="col-md-6 offset-md-3">
     <form action="http://localhost:3000/signup" method="post">
-      <div class="mb-3">
+      <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         <input
           type="text"
           class="form-control"
           id="firstName"
           placeholder="First Name"
           name="firstName"
+          hx-trigger="change"
+          hx-post="/validations/firstName"
+          hx-validate="true"
+          {{! Show why required field is necessary as the user is able to submit the form without filling the field if its not set to required }}
+          required
         />
       </div>
       <div class="mb-3">
@@ -27,7 +32,7 @@
           name="lastName"
         />
       </div>
-      <div class="mb-3">
+      <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         <input
           type="email"
           class="form-control"
@@ -35,15 +40,21 @@
           placeholder="Email"
           aria-describedby="emailHelp"
           name="email"
+          hx-trigger="change"
+          hx-post="/validations/email"
+          required
         />
       </div>
-      <div class="mb-3">
+      <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         <input
           type="password"
           class="form-control"
           id="password"
           placeholder="password"
           name="password"
+          hx-post="/validations/password"
+          hx-trigger="change"
+          required
         />
       </div>
 

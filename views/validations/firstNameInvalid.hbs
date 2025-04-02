@@ -1,17 +1,16 @@
 <div class="mb-3" hx-target="this" hx-swap="outerHTML">
   <input
-    type="email"
+    type="text"
     class="form-control is-invalid"
-    id="email"
-    placeholder="Email"
-    aria-describedby="emailHelp"
-    name="email"
-    hx-post="/validations/email"
+    id="firstName"
+    placeholder="First Name"
+    name="firstName"
     hx-trigger="change"
+    hx-post="/validations/firstName"
     value="{{value}}"
     required
   />
   <div class="invalid-feedback">
-    Please use a valid email address
+    First Name is required!
   </div>
 </div>

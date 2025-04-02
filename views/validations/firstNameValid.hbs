@@ -1,13 +1,12 @@
 <div class="mb-3" hx-target="this" hx-swap="outerHTML">
   <input
-    type="email"
+    type="text"
     class="form-control is-valid"
-    id="email"
-    placeholder="Email"
-    aria-describedby="emailHelp"
-    name="email"
-    hx-post="/validations/email"
+    id="firstName"
+    placeholder="First Name"
+    name="firstName"
     hx-trigger="change"
+    hx-post="/validations/firstName"
     value="{{value}}"
     required
   />
