@@ -16,6 +16,7 @@ const expressSession = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const prisma = require("./prisma/prismaClient.js");
 const addUserToViews = require("./middleware/addUserToViews.middleware.js");
+const validationsRouter = require("./routes/validations.js");
 
 dotenv.config();
 
@@ -71,6 +72,7 @@ app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/blog", blogRouter);
+app.use("/validations", validationsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
