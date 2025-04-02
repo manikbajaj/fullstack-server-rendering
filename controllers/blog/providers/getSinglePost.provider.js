@@ -1,5 +1,6 @@
 const prisma = require("../../../prisma/prismaClient.js");
 const { matchedData } = require("express-validator");
+const createTagLinks = require("../../../utils/createTagLinks.utils.js");
 
 async function getSinglePostProvider(req, res) {
   // get validated data
@@ -8,11 +9,18 @@ async function getSinglePostProvider(req, res) {
     where: {
       id: validatedData.blogId,
     },
+    include: {
+      author: true, // includes details about the author
+      tags: true, // includes all tags related to each post
+    },
   });
 
   console.log(post);
 
-  return res.render("blog");
+  return res.render("blog", {
+    ...post,
+    tags: createTagLinks(post.tags, "page=1"),
+  });
 }
 
 module.exports = getSinglePostProvider;
