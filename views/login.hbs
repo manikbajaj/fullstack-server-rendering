@@ -22,7 +22,7 @@
           hx-post="/validations/email"
         />
       </div>
-      <div class="mb-3">
+      <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         <input
           type="password"
           class="form-control"
@@ -33,7 +33,6 @@
           hx-trigger="change"
         />
       </div>
-
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>
