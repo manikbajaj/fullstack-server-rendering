@@ -8,6 +8,10 @@ async function getSinglePostProvider(req, res) {
     where: {
       id: validatedData.blogId,
     },
+    include: {
+      author: true, // includes details about the author
+      tags: true, // includes all tags related to each post
+    },
   });
 
   console.log(post);
