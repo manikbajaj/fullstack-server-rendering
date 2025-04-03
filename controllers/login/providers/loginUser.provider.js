@@ -23,6 +23,8 @@ async function loginUserProvider(req, res) {
     req.session.email = user.email;
   }
 
+  res.set("HX-Redirect", "/create-post");
+
   return res.render("createPost", {
     user: { ...user, isLoggedIn: true },
   });

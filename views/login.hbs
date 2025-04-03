@@ -8,7 +8,7 @@
 
 <div class="row mt-4">
   <div class="col-md-6 offset-md-3">
-    <form action="http://localhost:3000/login" method="post">
+    <form hx-post="/login">
       <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         {{! https://htmx.org/docs/#triggers }}
         <input
