@@ -11,6 +11,10 @@ router.get("/", getAllPostsValidator, async function (req, res, next) {
   return await handleGetBlogs(req, res);
 });
 
+router.get("/error", function (req, res, next) {
+  res.render("error", { errors: req.session.errors });
+});
+
 /* GET home page. */
 router.get("/create-post", requireAuth, function (req, res, next) {
   console.log(req.params);
