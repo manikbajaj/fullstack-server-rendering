@@ -4,7 +4,6 @@ const prisma = require("../../../prisma/prismaClient.js");
 
 async function loginUserProvider(req, res) {
   const validatedData = matchedData(req);
-  console.log(validatedData);
 
   const user = await prisma.user.findUnique({
     where: {
@@ -25,9 +24,7 @@ async function loginUserProvider(req, res) {
 
   res.set("HX-Redirect", "/create-post");
 
-  return res.render("createPost", {
-    user: { ...user, isLoggedIn: true },
-  });
+  return res.send("OK");
 }
 
 module.exports = { loginUserProvider };
