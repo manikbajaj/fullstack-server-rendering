@@ -8,7 +8,7 @@
 
 <div class="row mt-4">
   <div class="col-md-6 offset-md-3">
-    <form action="http://localhost:3000/signup" method="post">
+    <form hx-post="/signup">
       <div class="mb-3" hx-target="this" hx-swap="outerHTML">
         <input
           type="text"
@@ -19,7 +19,6 @@
           hx-trigger="change"
           hx-post="/validations/firstName"
           hx-validate="true"
-          {{! Show why required field is necessary as the user is able to submit the form without filling the field if its not set to required }}
           required
         />
       </div>

@@ -14,10 +14,7 @@ router.get("/", function (req, res, next) {
 /* GET home page. */
 router.post("/", signupValidator, async function (req, res, next) {
   const result = validationResult(req);
-  handlePostSignup(req, res);
-  console.log(result.array());
-
-  res.render("signup");
+  return await handlePostSignup(req, res);
 });
 
 module.exports = router;

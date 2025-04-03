@@ -11,7 +11,9 @@ async function createUserProvider(req, res) {
     data: { ...validatedData, password: hashedPassword },
   });
 
-  console.log(newUser);
+  res.set("HX-Redirect", "/login?signupSuccess=true");
+
+  return res.send("OK");
 }
 
 module.exports = { createUserProvider };
