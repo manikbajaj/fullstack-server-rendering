@@ -4,10 +4,14 @@ var requireAuth = require("../middleware/requireAuth.middleware.js");
 const getAllPostsValidator = require("../validators/getAllPosts.validator.js");
 var { validationResult } = require("express-validator");
 var { handleGetBlogs } = require("../controllers/blog/blog.controller.js");
+var loadErrorPage = require("../utils/loadErrorPage.utils.js");
 
 /* GET home page. */
 router.get("/", getAllPostsValidator, async function (req, res, next) {
   const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return loadErrorPage(req, res, result);
+  }
   return await handleGetBlogs(req, res);
 });
 
@@ -17,7 +21,6 @@ router.get("/error", function (req, res, next) {
 
 /* GET home page. */
 router.get("/create-post", requireAuth, function (req, res, next) {
-  console.log(req.params);
   res.render("createPost");
 });
 
