@@ -10,7 +10,7 @@ const createPostValidator = checkSchema({
   },
   content: {
     in: ["body"],
-    notEmpty: true,
+    optional: true,
     errorMessage: "Content cannot be empty.",
     isString: true,
     trim: true,
