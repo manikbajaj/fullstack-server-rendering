@@ -11,6 +11,8 @@ var indexRouter = require("./routes/index");
 var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var blogRouter = require("./routes/blog");
+var uploadRouter = require("./routes/upload.js");
+
 var dotenv = require("dotenv");
 const expressSession = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
@@ -73,6 +75,7 @@ app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/blog", blogRouter);
 app.use("/validations", validationsRouter);
+app.use("/upload", uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,4 +1,4 @@
-const uploadFileProvider = "./providers/uploadFile.provider.js";
+var uploadFileProvider = require("./providers/uploadFile.provider.js");
 
 async function handleFileUpload(req, res) {
   return await uploadFileProvider(req, res);

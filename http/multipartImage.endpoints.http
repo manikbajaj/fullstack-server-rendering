@@ -1,0 +1,9 @@
+POST http://localhost:3000/upload
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="featuredImage"; filename="camping-1.jpg"
+Content-Type: application/jpg
+
+< ./camping-1.jpg
+--WebKitFormBoundary--
