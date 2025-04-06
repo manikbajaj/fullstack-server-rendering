@@ -12,7 +12,6 @@ const storage = multer.diskStorage({
   /* By using file.fieldname, you are setting the saved filename to be the same as the name attribute of the input field from the form.  */
   filename: function (req, file, callback) {
     const newFilename = Date.now() + "-" + file.originalname;
-    console.log(newFilename);
     callback(null, newFilename);
   },
 });
@@ -23,7 +22,6 @@ router.post(
   "/",
   upload.single("featuredImage"),
   async function (req, res, next) {
-    console.log("You are here");
     try {
       return await handleFileUpload(req, res);
     } catch (err) {

@@ -1,5 +1,11 @@
 async function uploadFileProvider(req, res) {
-  return res.send("File Uploaded");
+  const uploadedFilename = req.file.filename;
+  featuredImageUrl = `/images/${uploadedFilename}`;
+
+  return res.render("partials/featuredImageResponse", {
+    featuredImageUrl,
+    layout: false,
+  });
 }
 
 module.exports = uploadFileProvider;
