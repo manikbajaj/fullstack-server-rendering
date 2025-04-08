@@ -22,23 +22,27 @@
                 required
               />
             </div>
-            <div class="mb-3">
+            <div class="mb-3" hx-swap="outerHTML">
               <input
                 type="text"
                 class="form-control"
                 id="slug"
                 placeholder="slug (example-url)"
                 name="slug"
+                hx-post="/validations/slug"
+                hx-trigger="change"
                 required
               />
             </div>
-            <div class="mb-3">
+            <div class="mb-3" hx-swap="outerHTML">
               <textarea
                 class="form-control"
                 id="excerpt"
                 rows="3"
                 placeholder="Excerpt"
                 name="excerpt"
+                hx-post="/validations/excerpt"
+                hx-trigger="change"
                 required
               ></textarea>
             </div>
