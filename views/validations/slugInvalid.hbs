@@ -1,0 +1,16 @@
+<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+  <input
+    type="text"
+    class="form-control is-invalid"
+    id="slug"
+    placeholder="slug (example-url)"
+    name="slug"
+    hx-post="/validations/slug"
+    hx-trigger="change"
+    value="{{value}}"
+    required
+  />
+  <div class="invalid-feedback">
+    You need to enter a valud slug like: example-url
+  </div>
+</div>

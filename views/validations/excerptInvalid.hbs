@@ -1,0 +1,17 @@
+<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+  <input
+    type="text"
+    name="excerpt"
+    class="form-control is-invalid"
+    hx-post="/validations/excerpt"
+    hx-trigger="change"
+    value="{{value}}"
+    id="excerpt"
+    rows="3"
+    placeholder="Excerpt"
+    required
+  />
+  <div class="invalid-feedback">
+    Excerpt can be of maximum 255 chars
+  </div>
+</div>

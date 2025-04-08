@@ -1,0 +1,16 @@
+<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+  <input
+    type="text"
+    class="form-control is-valid"
+    id="slug"
+    placeholder="slug (example-url)"
+    name="slug"
+    hx-post="/validations/slug"
+    hx-trigger="change"
+    value="{{value}}"
+    required
+  />
+  <div class="valid-feedback">
+    Looks Good!
+  </div>
+</div>
