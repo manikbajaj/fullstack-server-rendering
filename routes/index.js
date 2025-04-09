@@ -3,7 +3,10 @@ var router = express.Router();
 var requireAuth = require("../middleware/requireAuth.middleware.js");
 const getAllPostsValidator = require("../validators/getAllPosts.validator.js");
 var { validationResult } = require("express-validator");
-var { handleGetBlogs } = require("../controllers/blog/blog.controller.js");
+var {
+  handleGetBlogs,
+  handleGetCreatePost,
+} = require("../controllers/blog/blog.controller.js");
 var loadErrorPage = require("../utils/loadErrorPage.utils.js");
 
 /* GET home page. */
@@ -20,8 +23,8 @@ router.get("/error", function (req, res, next) {
 });
 
 /* GET home page. */
-router.get("/create-post", requireAuth, function (req, res, next) {
-  res.render("createPost");
+router.get("/create-post", requireAuth, async function (req, res, next) {
+  return await handleGetCreatePost(req, res);
 });
 
 /* GET home page. */

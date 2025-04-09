@@ -9,7 +9,6 @@ const {
 } = require("../controllers/blog/blog.controller.js");
 const getBlogPostValidator = require("../validators/getBlogPost.validator.js");
 
-
 /* GET home page. */
 router.get("/:blogId", getBlogPostValidator, async function (req, res, next) {
   const result = validationResult(req);
