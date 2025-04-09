@@ -16,7 +16,7 @@ async function loginUserProvider(req, res) {
 
   if (result) {
     req.session.isLoggedIn = true;
-    req.session.id = user.id;
+    req.session.userId = user.id;
     req.session.firstName = user.firstName;
     req.session.lastName = user.lastName;
     req.session.email = user.email;
