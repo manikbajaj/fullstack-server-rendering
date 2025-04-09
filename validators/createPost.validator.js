@@ -43,10 +43,23 @@ const createPostValidator = checkSchema({
       options: {
         protocols: ["http", "https"],
         require_protocol: true,
+        require_tld: false,
       },
       errorMessage: "Must be a valid URL.",
     },
     trim: true,
+  },
+  tags: {
+    in: ["body"],
+    optional: true,
+    isArray: {
+      errorMessage: "Tags must be an array of strings.",
+    },
+    custom: {
+      options: (tags) =>
+        Array.isArray(tags) && tags.every((tag) => typeof tag === "string"),
+      errorMessage: "Each tag must be a string.",
+    },
   },
 });
 

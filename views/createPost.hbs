@@ -11,7 +11,7 @@
 
       <div class="row mt-4">
         <div class="col-12">
-          <form id="createPost">
+          <form id="createPost" hx-post="/blog/create">
             <div class="mb-3">
               <input
                 type="text"
@@ -76,6 +76,8 @@
               id="featuredImageUrl"
               name="featuredImageUrl"
             />
+
+            <input type="hidden" id="content" name="content" />
             <button type="submit" class="btn btn-primary">Create a Post</button>
           </form>
         </div>

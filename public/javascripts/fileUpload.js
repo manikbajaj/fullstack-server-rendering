@@ -16,8 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Set this URL to the hidden input field in the createPostForm
         // Only using the pathname part of the URL
-        document.getElementById("featuredImageUrl").value =
-          newImageUrl.pathname;
+        document.getElementById("featuredImageUrl").value = newImageUrl.href;
 
         // Log the new image URL to the console
         console.log("New Image URL set:", newImageUrl);

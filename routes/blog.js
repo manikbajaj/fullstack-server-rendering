@@ -17,8 +17,8 @@ router.get("/:blogId", getBlogPostValidator, async function (req, res, next) {
 
 router.post("/create", createPostValidator, async function (req, res, next) {
   const result = validationResult(req);
-  handlePostBlog(req, res);
   console.log(result.array());
+  return await handlePostBlog(req, res);
   res.render("blog");
 });
 
