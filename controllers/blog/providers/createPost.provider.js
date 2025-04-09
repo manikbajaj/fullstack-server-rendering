@@ -1,6 +1,7 @@
 const { matchedData } = require("express-validator");
 const sanitizeHtml = require("sanitize-html");
 const prisma = require("../../../prisma/prismaClient.js");
+const { StatusCodes } = require("http-status-codes");
 
 async function createPostProvider(req, res) {
   // get validated data
@@ -29,13 +30,14 @@ async function createPostProvider(req, res) {
         },
       },
     });
+
+    res.set("HX-Redirect", "/create-post?success=true");
+    return res.send("OK");
   } catch (error) {
-    console.log(error);
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .send("Failed to create post: " + error.message);
   }
-
-  console.log(post);
-
-  // return created post
 }
 
 module.exports = { createPostProvider };
